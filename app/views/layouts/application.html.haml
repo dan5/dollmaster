@@ -1,0 +1,56 @@
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml"}
+  %head
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "Nikukyu-Punch", :name => "copyright"}/
+    
+    %title ●●●あなたのホームページ名●●●
+    %link{:href => "#{css_path}/style.css", :rel => "stylesheet", :type => "text/css"}/
+    %script{:src => "#{css_path}/script.js", :type => "text/javascript"}
+  %body{:onload => "MM_preloadImages('#{image_path}/menu_over_01.gif','#{image_path}/menu_over_02.gif','#{image_path}/menu_over_03.gif','#{image_path}/menu_over_04.gif','#{image_path}/menu_over_05.gif','#{image_path}/menu_over_06.gif')"}
+    #container
+      #header
+        %h1 〜h1タグをここに入れます。重要な箇所なので念入りに決めましょう〜
+        %img{:alt => "logo", :height => "71", :src => "#{image_path}/logo.gif", :width => "536"}/
+      / header
+      %ul#menu
+        %li<>
+          %a{:href => "/"}<
+            %img#Image1{:alt => "HOME", :height => "38", :name => "Image1", :onmouseout => "MM_swapImgRestore()", :onmouseover => "MM_swapImage('Image1','','#{image_path}/menu_over_01.gif',1)", :src => "#{image_path}/menu_over_01.gif", :width => "121"}</
+        %li<>
+          %a{:href => "/about"}<
+            %img#Image2{:alt => "ABOUT", :height => "38", :name => "Image2", :onmouseout => "MM_swapImgRestore()", :onmouseover => "MM_swapImage('Image2','','#{image_path}/menu_over_02.gif',1)", :src => "#{image_path}/menu_02.gif", :width => "122"}</
+        %li<>
+          %a{:href => "#"}<
+            %img#Image3{:alt => "", :height => "38", :name => "Image3", :onmouseout => "MM_swapImgRestore()", :onmouseover => "MM_swapImage('Image3','','#{image_path}/menu_over_03.gif',1)", :src => "#{image_path}/menu_03.gif", :width => "122"}</
+        %li<>
+          %a{:href => "#"}<
+            %img#Image4{:alt => "WORKS", :height => "38", :name => "Image4", :onmouseout => "MM_swapImgRestore()", :onmouseover => "MM_swapImage('Image4','','#{image_path}/menu_over_04.gif',1)", :src => "#{image_path}/menu_04.gif", :width => "122"}</
+        %li<>
+          %a{:href => "#"}<
+            %img#Image5{:alt => "LINK", :height => "38", :name => "Image5", :onmouseout => "MM_swapImgRestore()", :onmouseover => "MM_swapImage('Image5','','#{image_path}/menu_over_05.gif',1)", :src => "#{image_path}/menu_05.gif", :width => "122"}</
+        %li<>
+          %a{:href => "#"}<
+            %img#Image6{:alt => "CONTACT", :height => "38", :name => "Image6", :onmouseout => "MM_swapImgRestore()", :onmouseover => "MM_swapImage('Image6','','#{image_path}/menu_over_06.gif',1)", :src => "#{image_path}/menu_06.gif", :width => "121"}</
+      #contents
+        %img#main-img{:alt => "", :height => "200", :src => "#{image_path}/main_img.jpg", :width => "720"}/
+        %br/
+        #main
+          = yield
+        / main
+
+        #sub
+          %h3 見出し
+          %p
+            上の見出し部分はh3タグで囲めばOK。
+        / sub
+
+        #footer
+          Copyright(C) 2012 ●●●あなたのホームページ名●●● All Rights Reserved.
+          %br/
+          %a{:href => "http://nikukyu-punch.com/", :target => "_blank"} * Template design by Nikukyu-punch *
+      / contents

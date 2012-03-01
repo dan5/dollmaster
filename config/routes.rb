@@ -1,4 +1,7 @@
 Dollmaster::Application.routes.draw do
+  root :to => 'welcome#index'
+  get "about" => 'welcome#about'
+
   match '/auth/:provider/callback', :to => 'sessions#callback'
 
   # The priority is based upon order of creation:
