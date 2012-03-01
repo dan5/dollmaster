@@ -8,34 +8,24 @@
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "Nikukyu-Punch", :name => "copyright"}/
     
-    %title ●●●あなたのホームページ名●●●
+    %title dollmaster
     %link{:href => "#{css_path}/style.css", :rel => "stylesheet", :type => "text/css"}/
     %script{:src => "#{css_path}/script.js", :type => "text/javascript"}
   %body{:onload => "MM_preloadImages('#{image_path}/menu_over_01.gif','#{image_path}/menu_over_02.gif','#{image_path}/menu_over_03.gif','#{image_path}/menu_over_04.gif','#{image_path}/menu_over_05.gif','#{image_path}/menu_over_06.gif')"}
     #container
       #header
-        %h1 〜h1タグをここに入れます。重要な箇所なので念入りに決めましょう〜
+        %h1 〜project-dollmaster〜
         %img{:alt => "logo", :height => "71", :src => "#{image_path}/logo.gif", :width => "536"}/
       / header
       %ul#menu
-        %li<>
-          %a{:href => "/"}<
-            %img#Image1{:alt => "HOME", :height => "38", :name => "Image1", :onmouseout => "MM_swapImgRestore()", :onmouseover => "MM_swapImage('Image1','','#{image_path}/menu_over_01.gif',1)", :src => "#{image_path}/menu_over_01.gif", :width => "121"}</
-        %li<>
-          %a{:href => "/about"}<
-            %img#Image2{:alt => "ABOUT", :height => "38", :name => "Image2", :onmouseout => "MM_swapImgRestore()", :onmouseover => "MM_swapImage('Image2','','#{image_path}/menu_over_02.gif',1)", :src => "#{image_path}/menu_02.gif", :width => "122"}</
-        %li<>
-          %a{:href => "#"}<
-            %img#Image3{:alt => "", :height => "38", :name => "Image3", :onmouseout => "MM_swapImgRestore()", :onmouseover => "MM_swapImage('Image3','','#{image_path}/menu_over_03.gif',1)", :src => "#{image_path}/menu_03.gif", :width => "122"}</
-        %li<>
-          %a{:href => "#"}<
-            %img#Image4{:alt => "WORKS", :height => "38", :name => "Image4", :onmouseout => "MM_swapImgRestore()", :onmouseover => "MM_swapImage('Image4','','#{image_path}/menu_over_04.gif',1)", :src => "#{image_path}/menu_04.gif", :width => "122"}</
-        %li<>
-          %a{:href => "#"}<
-            %img#Image5{:alt => "LINK", :height => "38", :name => "Image5", :onmouseout => "MM_swapImgRestore()", :onmouseover => "MM_swapImage('Image5','','#{image_path}/menu_over_05.gif',1)", :src => "#{image_path}/menu_05.gif", :width => "122"}</
-        %li<>
-          %a{:href => "#"}<
-            %img#Image6{:alt => "CONTACT", :height => "38", :name => "Image6", :onmouseout => "MM_swapImgRestore()", :onmouseover => "MM_swapImage('Image6','','#{image_path}/menu_over_06.gif',1)", :src => "#{image_path}/menu_06.gif", :width => "121"}</
+        - %w(home about doll item quest battle).each.with_index do |e, i|
+          - idx = i + 1
+          - over = action_name == e ? '_over' : ''
+          - over = (action_name == 'index' and e == 'home') ? '_over' : over
+          - action = e == 'home' ? '' : e
+          %li<>
+            %a{:href => "/#{action}"}<
+              %img#Image1{:alt => e.upcase, :height => "38", :name => "Image#{idx}", :onmouseout => "MM_swapImgRestore()", :onmouseover => "MM_swapImage('Image#{idx}','','#{image_path}/menu_over_0#{idx}.gif',1)", :src => "#{image_path}/menu#{over}_0#{idx}.gif", :width => "121"}</
       #contents
         %img#main-img{:alt => "", :height => "200", :src => "#{image_path}/main_img.jpg", :width => "720"}/
         %br/
@@ -50,7 +40,7 @@
         / sub
 
         #footer
-          Copyright(C) 2012 ●●●あなたのホームページ名●●● All Rights Reserved.
+          Copyright(C) 2012 project-dollmaster All Rights Reserved.
           %br/
           %a{:href => "http://nikukyu-punch.com/", :target => "_blank"} * Template design by Nikukyu-punch *
       / contents

@@ -1,6 +1,10 @@
 Dollmaster::Application.routes.draw do
   root :to => 'welcome#index'
-  get "about" => 'welcome#about'
+  get 'about'  => 'welcome#about'
+  get 'doll'   => 'welcome#index'
+  get 'item'   => 'welcome#index'
+  get 'quest'  => 'welcome#index'
+  get 'battle' => 'welcome#index'
 
   match '/auth/:provider/callback', :to => 'sessions#callback'
 
