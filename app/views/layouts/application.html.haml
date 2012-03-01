@@ -1,16 +1,14 @@
-!!!
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 %html{:xmlns => "http://www.w3.org/1999/xhtml"}
   %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "Nikukyu-Punch", :name => "copyright"}/
+    %link{:href => "#{css_path}/style.css", :rel => "stylesheet", :type => "text/css"}/
+    %script{:src => "#{css_path}/script.js", :type => "text/javascript"}
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
-
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %meta{:content => "Nikukyu-Punch", :name => "copyright"}/
-    
     %title dollmaster
-    %link{:href => "#{css_path}/style.css", :rel => "stylesheet", :type => "text/css"}/
-    %script{:src => "#{css_path}/script.js", :type => "text/javascript"}
   %body{:onload => "MM_preloadImages('#{image_path}/menu_over_01.gif','#{image_path}/menu_over_02.gif','#{image_path}/menu_over_03.gif','#{image_path}/menu_over_04.gif','#{image_path}/menu_over_05.gif','#{image_path}/menu_over_06.gif')"}
     #container
       #header
@@ -23,9 +21,10 @@
           - over = action_name == e ? '_over' : ''
           - over = (action_name == 'index' and e == 'home') ? '_over' : over
           - action = e == 'home' ? '' : e
+          - width = (idx == 1 or idx == 6) ? 121 : 122 # trap
           %li<>
             %a{:href => "/#{action}"}<
-              %img#Image1{:alt => e.upcase, :height => "38", :name => "Image#{idx}", :onmouseout => "MM_swapImgRestore()", :onmouseover => "MM_swapImage('Image#{idx}','','#{image_path}/menu_over_0#{idx}.gif',1)", :src => "#{image_path}/menu#{over}_0#{idx}.gif", :width => "121"}</
+              %img{:id => "Image#{idx}", :alt => e.upcase, :height => "38", :name => "Image#{idx}", :onmouseout => "MM_swapImgRestore()", :onmouseover => "MM_swapImage('Image#{idx}','','#{image_path}/menu_over_0#{idx}.gif',1)", :src => "#{image_path}/menu#{over}_0#{idx}.gif", :width => width}</
       #contents
         %img#main-img{:alt => "", :height => "200", :src => "#{image_path}/main_img.jpg", :width => "720"}/
         %br/
