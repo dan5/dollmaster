@@ -9,7 +9,7 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
     %title dollmaster
-  %body{:onload => "MM_preloadImages('#{image_path}/menu_over_01.gif','#{image_path}/menu_over_02.gif','#{image_path}/menu_over_03.gif','#{image_path}/menu_over_04.gif','#{image_path}/menu_over_05.gif','#{image_path}/menu_over_06.gif')"}
+  %body{:onload => "start_main(); MM_preloadImages('#{image_path}/menu_over_01.gif','#{image_path}/menu_over_02.gif','#{image_path}/menu_over_03.gif','#{image_path}/menu_over_04.gif','#{image_path}/menu_over_05.gif','#{image_path}/menu_over_06.gif')"}
     #container
       #header
         %h1 〜project-dollmaster〜
@@ -26,7 +26,7 @@
             %a{:href => "/#{action}"}<
               %img{:id => "Image#{idx}", :alt => e.upcase, :height => "38", :name => "Image#{idx}", :onmouseout => "MM_swapImgRestore()", :onmouseover => "MM_swapImage('Image#{idx}','','#{image_path}/menu_over_0#{idx}.gif',1)", :src => "#{image_path}/menu#{over}_0#{idx}.gif", :width => width}</
       #contents
-        %img#main-img{:alt => "", :height => "200", :src => "#{image_path}/main_img.jpg", :width => "720"}/
+        %canvas#screen{:height => "200", :width => "720"}
         %br/
         #main
           = yield
@@ -39,7 +39,7 @@
         / sub
 
         #footer
-          Copyright(C) 2012 project-dollmaster All Rights Reserved.
+          (C) 2012 project-dollmaster
           %br/
           %a{:href => "http://nikukyu-punch.com/", :target => "_blank"} * Template design by Nikukyu-punch *
       / contents
